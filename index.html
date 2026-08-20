@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>ConCalc</title>
+  <link rel="stylesheet" href="style.css">
+  <link type="image/png" sizes="16x16" rel="icon" href="icons/icon-16.png">
+  <link type="image/png" sizes="32x32" rel="icon" href="icons/icon-32.png">
+  <link type="image/png" sizes="192x192" rel="icon" href="icons/icon-192.png">
+  <link type="image/png" sizes="512x512" rel="icon" href="icons/icon-512.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0078d7">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="container">
+    <textarea id="editor" aria-label="Текст расчётов"></textarea>
+    <button id="help-btn" title="Помощь (Ctrl+H)" aria-label="Помощь (Ctrl+H)">?</button>
+    <button id="settings-btn" title="Настройки (Ctrl+,)" aria-label="Настройки (Ctrl+,)">⚙</button>
+    <button id="clear-btn" title="Очистить (Ctrl+Shift+X)" aria-label="Очистить (Ctrl+Shift+X)">C</button>
+    <button id="update-btn" title="Доступно обновление, нажмите Ctrl+F5 или обновите страницу." aria-label="Доступно обновление, нажмите Ctrl+F5 или обновите страницу." hidden>Обновление</button>
+  </div>
+  <dialog id="settings-dialog" aria-label="Настройки">
+    <form method="dialog" id="settings-form">
+      <h2>Настройки</h2>
+      <div class="settings-body">
+        <label class="settings-row">
+          <span>Разделение разрядов (Ctrl+G)</span>
+          <input type="checkbox" id="setting-grouping">
+        </label>
+        <label class="settings-row">
+          <span>Разделитель разрядов</span>
+          <select id="setting-group-separator">
+            <option value=" ">пробел</option>
+            <option value="'">апостроф</option>
+          </select>
+        </label>
+        <label class="settings-row">
+          <span>Знаки после запятой не ограничивать</span>
+          <input type="checkbox" id="setting-decimals-unlimited">
+        </label>
+        <label class="settings-row">
+          <span>Знаков после запятой, максимум (Ctrl+Shift+1…9, ноль — Ctrl+Shift+`)</span>
+          <input type="number" id="setting-decimals" min="0" max="64" step="1">
+        </label>
+        <label class="settings-row">
+          <span>Значащих цифр (precision)</span>
+          <input type="number" id="setting-precision" min="1" max="64" step="1">
+        </label>
+        <label class="settings-row">
+          <span>Порог e-записи снизу, 10^N</span>
+          <input type="number" id="setting-lower-exp" min="-30" max="0" step="1">
+        </label>
+        <label class="settings-row">
+          <span>Порог e-записи сверху, 10^N</span>
+          <input type="number" id="setting-upper-exp" min="0" max="30" step="1">
+        </label>
+        <label class="settings-row">
+          <span>Точность вычислений</span>
+          <input type="number" id="setting-calc-precision" min="8" max="128" step="1">
+        </label>
+      </div>
+      <div class="settings-actions">
+        <button type="button" id="settings-reset-btn">По умолчанию</button>
+        <button type="submit" id="settings-close-btn">Закрыть</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="parser.js"></script>
+  <script src="config.js"></script>
+  <script src="ui.js"></script>
+  <script src="storage.js"></script>
+  <script src="history.js"></script>
+  <script src="settings.js"></script>
+  <script src="calc.js"></script>
+  <script src="update-check.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

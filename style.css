@@ -1,0 +1,183 @@
+html, body {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+}
+
+textarea {
+  width: 100%;
+  height: 100vh;
+  padding: 10px;
+  font-size: 16px;
+  font-family: consolas;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  resize: none;
+  line-height: 1.5;
+}
+
+#clear-btn, #help-btn, #settings-btn, #update-btn {
+  position: absolute;
+  bottom: 10px;
+  padding: 5px 10px;
+  font-size: 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Три квадратные кнопки — одинаковая коробка, чтобы ряд не «прыгал» от
+   ширины и метрик самого символа. Без этого «⚙» (issue #10) выходил
+   заметно крупнее соседей: глиф шире, а его строка выше — кнопка
+   получалась 32.66×30 против 28.34×27 у «?» и 30.84×27 у «C». Размер
+   фиксируется здесь, а не подгонкой шрифта, чтобы любой будущий символ
+   на кнопке не менял геометрию ряда. #update-btn в этот список не входит:
+   это широкая текстовая кнопка, ей нужны прежние padding и авто-ширина. */
+#clear-btn, #help-btn, #settings-btn {
+  width: 32px;
+  height: 27px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+#clear-btn {
+  right: 10px;
+  background-color: #0078d7;
+  color: #fff;
+}
+
+#clear-btn:hover {
+  background-color: #005fa3;
+}
+
+#settings-btn {
+  right: 50px; /* между «?» и «C», issue #10 */
+  background-color: rgba(128, 128, 128, 0.5);
+  color: #fff;
+}
+
+#settings-btn:hover {
+  background-color: rgba(128, 128, 128, 0.7);
+}
+
+#help-btn {
+  right: 90px; /* левее шестерёнки настроек (issue #10) */
+  background-color: rgba(128, 128, 128, 0.5);
+  color: #fff;
+}
+
+#help-btn:hover {
+  background-color: rgba(128, 128, 128, 0.7);
+}
+
+/* Диалог настроек (issue #10): собственный скроллинг тела, т. к. настройки
+   могут не поместиться в окно на маленькой высоте. */
+#settings-dialog {
+  max-width: 90vw;
+  max-height: 90vh;
+  border: none;
+  border-radius: 4px;
+  padding: 0;
+  background-color: #fff;
+  color: #000;
+}
+
+#settings-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#settings-form {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  font-family: consolas;
+}
+
+#settings-form h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.settings-body {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.settings-row input[type="number"] {
+  width: 6em;
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.settings-actions button {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.5);
+  color: #fff;
+}
+
+.settings-actions button:hover {
+  background-color: rgba(128, 128, 128, 0.7);
+}
+
+#update-btn {
+  left: 10px;
+  background-color: #ffb74d;
+  color: #3a2400;
+}
+
+#update-btn:hover {
+  background-color: #ffa726;
+}
+
+/* Стили для темной темы */
+@media (prefers-color-scheme: dark) {
+  textarea {
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  #settings-dialog {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+}
+
+/* Стили для светлой темы */
+@media (prefers-color-scheme: light) {
+  textarea {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
+
