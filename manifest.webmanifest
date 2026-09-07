@@ -1,5 +1,5 @@
 {
-  "name": "Console Calculator",
+  "name": "ConCalc",
   "short_name": "ConCalc",
   "start_url": "index.html",
   "display": "standalone",
