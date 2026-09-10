@@ -21,3 +21,7 @@ python3 -m http.server 8000
 ## Возможности вычислений
 
 Вычисления выполняет [mathjs](https://mathjs.org/docs/expressions/syntax.html) — единицы измерения, матрицы, произвольная точность и остальной синтаксис описаны в его документации.
+
+## Сторонние компоненты
+
+Вычисления выполняет mathjs 14.8.1 (Apache License 2.0, © Jos de Jong) — локальная копия `vendor/math.min.js`. Атрибуция и полный текст лицензии: `vendor/THIRD-PARTY-NOTICES.txt`.
